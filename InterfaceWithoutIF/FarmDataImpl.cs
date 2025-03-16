@@ -7,16 +7,19 @@
         public string OwnerName { get; set; } 
         public string OwnerPersonality { get; set; }
         public FarmDataImpl? FarmData { get; set; }
-        public bool HasFarmData =>  this != null;
+        public bool HasFarmData { get; set; }
 
 
-        public FarmDataImpl(string _farmName, int sheepCount, string ownerName, string ownerPersonality)
+        public FarmDataImpl(string _farmName, int sheepCount, string ownerName,
+            string ownerPersonality, bool _hasFarmData)
         { 
             farmName = _farmName;
 
             SheepCount = sheepCount;
             OwnerName = ownerName;
             OwnerPersonality = ownerPersonality;
+            HasFarmData = _hasFarmData;
+
         }
 
         public string GetData()

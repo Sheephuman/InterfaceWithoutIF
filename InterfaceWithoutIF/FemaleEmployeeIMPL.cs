@@ -7,11 +7,14 @@
         public (int Bust, int Waist, int Hip) Measurements { get; set; }
         public string? SheepBreed { get; set; }
 
-        public bool HasEmployeeData { get; set; } = false;
+        public bool HasEmployeeData { get; set; }
 
         // コンストラクタ
-        public FemaleEmployeeImpl(string employeeName, int height, (int Bust, int Waist, int Hip) measurements, string sheepBreed)
+        public FemaleEmployeeImpl(string employeeName, int height, 
+            (int Bust, int Waist, int Hip) measurements, string sheepBreed
+            ,bool _hasEmployee)
         {
+            HasEmployeeData = _hasEmployee;
             
             EmployeeName = employeeName ;
 
