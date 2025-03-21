@@ -30,7 +30,7 @@ public partial class MainWindow : Window
         }
         catch (FormatException ex)
         {
-            MessageBox.Show("空欄の箇所があります");
+            MessageBox.Show(ex.Message + "空欄の箇所があります");
             //debug.Writelineも可
 
         }
@@ -47,17 +47,17 @@ public partial class MainWindow : Window
       );
 
 
-            var empleyData = new FemaleEmployeeImpl(EmployeeNameTextBox.Text, int.Parse(HeightTextBox.Text),
+            IDataContainer empleyData = new FemaleEmployeeImpl(EmployeeNameTextBox.Text, int.Parse(HeightTextBox.Text),
                 measurements, SheepBreedTextBox.Text, true);
 
-
+                
 
 
             EmployeeOutputTextBlock.Text = empleyData.GetData();
         }
         catch (FormatException ex)
         {
-            MessageBox.Show("空欄の箇所があります");
+            MessageBox.Show(ex.Message + "空欄の箇所があります");
                 //debug.Writelineも可
         
         }

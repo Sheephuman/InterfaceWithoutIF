@@ -9,6 +9,7 @@
 
         public bool HasEmployeeData { get; set; }
 
+
         // コンストラクタ
         public FemaleEmployeeImpl(string employeeName, int height, 
             (int Bust, int Waist, int Hip) measurements, string sheepBreed
@@ -23,22 +24,12 @@
             SheepBreed = sheepBreed;
         }
 
-   
-            public string GetData()
-        {
-
-            if (HasEmployeeData)
-            {
-                var employee = this ?? throw new ArgumentNullException(nameof(FemaleEmployeeImpl));
-                // FemaleEmployeeの場合のデータ表示
-                return $"名前: {employee.EmployeeName}（身長: {employee.Height}cm）\n" +
-                       $"3サイズ: B{employee.Measurements.Bust} W{employee.Measurements.Waist}" +
-                       $" H{employee.Measurements.Hip}\n" +
-                       $"羊種: {employee.SheepBreed}";
-            }
-
-            return "データがありません";
-        }
+        // null Objectパターン
+        public string GetData() =>
+            $"名前: {EmployeeName}（身長: {Height}cm）\n" +
+            $"3サイズ: B{Measurements.Bust} W{Measurements.Waist}" +
+            $" H{Measurements.Hip}\n" +
+            $"羊種: {SheepBreed}";
     }
 
 }
