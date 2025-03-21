@@ -1,4 +1,6 @@
-﻿namespace SuperDataClassTest
+﻿using InterfaceWithoutIF;
+
+namespace SuperDataClassTest
 {
     public class FarmDataImpl:IDataContainer
     {
@@ -24,18 +26,15 @@
 
         public string GetData()
         {
-            var frmdata = this ?? throw new ArgumentNullException(nameof(FarmData));
+            var emptyData = new EmptyDataContainer();
 
-            if (HasFarmData)
-            {
-            
-                return $"【牧場データ】\n" +
-                                 $"牧場名: {frmdata.farmName}\n" +
-                                 $"飼育頭数: {frmdata.SheepCount} 頭\n" +
-                                 $"牧場主: {frmdata.OwnerName}（性格: {frmdata.OwnerPersonality}）";
-            }
+            string returndata = HasFarmData? $"【牧場データ】\n" +
+                                 $"牧場名: {farmName}\n" +
+                                 $"飼育頭数: {SheepCount} 頭\n" +
+                                 $"牧場主: {OwnerName}（性格: {OwnerPersonality}）"
+                                 : emptyData.GetData();
 
-            return "データがありません";
+            return returndata;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace SuperDataClassTest
+﻿using InterfaceWithoutIF;
+
+namespace SuperDataClassTest
 {
     public class FemaleEmployeeImpl: IDataContainer
     {
@@ -24,12 +26,26 @@
             SheepBreed = sheepBreed;
         }
 
-        // null Objectパターン
-        public string GetData() =>
+   
+            public string GetData()
+        {
+
+            var emptyData = new EmptyDataContainer();   
+
+            var returnData = HasEmployeeData ? // FemaleEmployeeの場合のデータ表示
             $"名前: {EmployeeName}（身長: {Height}cm）\n" +
-            $"3サイズ: B{Measurements.Bust} W{Measurements.Waist}" +
-            $" H{Measurements.Hip}\n" +
-            $"羊種: {SheepBreed}";
+                   $"3サイズ: B{Measurements.Bust} W{Measurements.Waist}" +
+                   $" H{Measurements.Hip}\n" +
+                   $"羊種: {SheepBreed}" : emptyData.GetData() ;
+
+
+            return returnData;
+
+
+
+
+
+        }
     }
 
 }

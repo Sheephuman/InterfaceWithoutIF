@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using InterfaceWithoutIF;
+using System.Windows;
 
 namespace SuperDataClassTest;
 
@@ -24,7 +25,9 @@ public partial class MainWindow : Window
             OwnerPersonalityTextBox.Text, true);
 
 
-
+            //Dataを持っているか判定
+            //三項演算子かNull合体演算子
+            EmployeeOutputTextBlock.Text = farmData.HasFarmData ? farmData.GetData() : farmData.GetData();
 
             FarmOutputTextBlock.Text = farmData.GetData();
         }
@@ -47,13 +50,13 @@ public partial class MainWindow : Window
       );
 
 
-            IDataContainer empleyData = new FemaleEmployeeImpl(EmployeeNameTextBox.Text, int.Parse(HeightTextBox.Text),
+            var empleyData = new FemaleEmployeeImpl(EmployeeNameTextBox.Text, int.Parse(HeightTextBox.Text),
                 measurements, SheepBreedTextBox.Text, true);
 
                 
-
-
-            EmployeeOutputTextBlock.Text = empleyData.GetData();
+            var emptydata = new EmptyDataContainer();
+                
+            EmployeeOutputTextBlock.Text = empleyData.HasEmployeeData ?  empleyData.GetData(): emptydata.GetData();
         }
         catch (FormatException ex)
         {
