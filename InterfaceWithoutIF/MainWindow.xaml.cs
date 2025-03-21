@@ -25,10 +25,6 @@ public partial class MainWindow : Window
             OwnerPersonalityTextBox.Text, true);
 
 
-            //Dataを持っているか判定
-            //三項演算子かNull合体演算子
-            EmployeeOutputTextBlock.Text = farmData.HasFarmData ? farmData.GetData() : farmData.GetData();
-
             FarmOutputTextBlock.Text = farmData.GetData();
         }
         catch (FormatException ex)
@@ -54,9 +50,7 @@ public partial class MainWindow : Window
                 measurements, SheepBreedTextBox.Text, true);
 
                 
-            var emptydata = new EmptyDataContainer();
-                
-            EmployeeOutputTextBlock.Text = empleyData.HasEmployeeData ?  empleyData.GetData(): emptydata.GetData();
+            EmployeeOutputTextBlock.Text = empleyData.GetData();
         }
         catch (FormatException ex)
         {
